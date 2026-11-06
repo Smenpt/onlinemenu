@@ -1,0 +1,16 @@
+{
+  "name": "cafe-table-menu",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Онлайн-меню и заказы по QR-коду со столика",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/"
+  },
+  "dependencies": {
+    "qrcode-generator": "2.0.4"
+  }
+}

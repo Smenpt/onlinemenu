@@ -1,0 +1,74 @@
+[
+  {
+    "id": "chicken",
+    "name": "Цыплёнок с травами",
+    "category": "Горячее",
+    "description": "Запечённый цыплёнок, молодой картофель, соус из трав",
+    "price": 4200,
+    "emoji": "🍗",
+    "color": "#e9e2d4",
+    "tag": "",
+    "popular": true,
+    "image": ""
+  },
+  {
+    "id": "soup",
+    "name": "Тыквенный крем-суп",
+    "category": "Первое",
+    "description": "Тыква, кокосовые сливки, хрустящий нут и чили-масло",
+    "price": 1950,
+    "emoji": "🍲",
+    "color": "#f0e1ca",
+    "tag": "",
+    "popular": false,
+    "image": ""
+  },
+  {
+    "id": "cheesecake",
+    "name": "Чизкейк с ягодами",
+    "category": "Десерты",
+    "description": "Нежный сливочный чизкейк и соус из смородины",
+    "price": 1750,
+    "emoji": "🍰",
+    "color": "#f1e2df",
+    "tag": "",
+    "popular": false,
+    "image": ""
+  },
+  {
+    "id": "lemonade",
+    "name": "Домашний лимонад",
+    "category": "Напитки",
+    "description": "Лимон, мята, сироп из бузины и газированная вода",
+    "price": 1200,
+    "emoji": "🍋",
+    "color": "#edf0d8",
+    "tag": "",
+    "popular": false,
+    "image": ""
+  },
+  {
+    "id": "coffee",
+    "name": "Флэт уайт",
+    "category": "Напитки",
+    "description": "Двойной эспрессо и бархатистое молоко",
+    "price": 1300,
+    "emoji": "☕",
+    "color": "#e9dfd5",
+    "tag": "",
+    "popular": false,
+    "image": ""
+  },
+  {
+    "id": "dish-1793949856105",
+    "name": "Борщ",
+    "category": "Первое",
+    "description": "капуста картошка говядина морковь лук",
+    "price": 1300,
+    "emoji": "🍽️",
+    "color": "#e9eee4",
+    "tag": "",
+    "popular": false,
+    "image": ""
+  }
+]

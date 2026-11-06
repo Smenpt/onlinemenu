@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f6f1">
+  <title>Листва — меню</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap">
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/js/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/"><span class="brand-mark">Л</span><span>ЛИСТВА<small>КАФЕ · ГОРОДСКАЯ КУХНЯ</small></span></a>
+    <div class="open-state" id="open-state" hidden><i></i> <span id="open-state-text"></span></div>
+    <button class="cart-top" id="cart-open">Корзина <b id="cart-count">0</b></button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">МЕДЛЕННАЯ ЕДА · СЕЗОННЫЕ ПРОДУКТЫ</span>
+        <h1>Вкусно. Просто.<br><em>Для вас.</em></h1>
+        <p>Выберите любимое и закажите прямо к столику — мы уже готовим.</p>
+        <div class="table-chip">ВАШ СТОЛИК <strong id="table-label">не определён</strong></div>
+        <p class="table-hint" id="table-hint" hidden>Чтобы сделать заказ, отсканируйте QR-код на столике.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="plate"><div class="plate-food">🥗</div></div>
+        <span class="art-note">Свежее каждый день<br><span data-hours>10:00–23:00</span></span>
+        <span class="art-leaf">✳</span>
+      </div>
+    </section>
+
+    <section class="order-tracker" id="order-tracker" aria-live="polite" hidden></section>
+
+    <nav class="categories" id="categories" aria-label="Разделы меню"></nav>
+
+    <section class="menu-section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">ИЗ НАШЕЙ КУХНИ</span>
+          <h2 id="category-title">Все блюда</h2>
+        </div>
+        <div class="menu-search">
+          <input id="menu-search" type="search" placeholder="Поиск блюда…" aria-label="Поиск блюда">
+        </div>
+        <span class="result-count" id="result-count"></span>
+      </div>
+      <div class="menu-grid" id="menu-grid"></div>
+    </section>
+
+    <footer class="site-footer">
+      <a class="brand" href="/"><span class="brand-mark">Л</span><span>ЛИСТВА<small>Еда, которая радует</small></span></a>
+      <span>Ежедневно · <span data-hours>10:00–23:00</span></span>
+    </footer>
+  </main>
+
+  <div class="overlay" id="overlay">
+    <aside class="drawer" role="dialog" aria-modal="true" aria-label="Корзина">
+      <div class="drawer-head">
+        <div><span class="eyebrow">ВАШ ЗАКАЗ</span><h2>Корзина</h2></div>
+        <button class="icon-button" id="close-cart" aria-label="Закрыть корзину">×</button>
+      </div>
+      <div id="cart-items" class="cart-items"></div>
+      <label class="note-label" for="order-note">Комментарий к заказу</label>
+      <textarea id="order-note" maxlength="500" placeholder="Например, без лука"></textarea>
+      <div class="cart-total"><span>Итого</span><strong id="cart-total">0 ₸</strong></div>
+      <button class="checkout" id="checkout">Заказать к столику <span>→</span></button>
+      <p class="secure-note">Оплата после подачи · заказ отправится на кухню</p>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

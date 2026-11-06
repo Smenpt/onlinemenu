@@ -1,0 +1,301 @@
+[
+  {
+    "id": "A9122667",
+    "table": 3,
+    "items": [
+      {
+        "id": "chicken",
+        "name": "Цыплёнок с травами",
+        "quantity": 2,
+        "price": 4200
+      },
+      {
+        "id": "soup",
+        "name": "Тыквенный крем-суп",
+        "quantity": 2,
+        "price": 1950
+      }
+    ],
+    "total": 12300,
+    "note": "",
+    "source": "guest",
+    "status": "closed",
+    "createdAt": "2026-11-06T09:58:42.667Z",
+    "closedAt": "2026-11-06T09:59:02.119Z",
+    "updatedAt": "2026-11-06T09:59:02.119Z"
+  },
+  {
+    "id": "A7782628",
+    "table": 3,
+    "items": [
+      {
+        "id": "cheesecake",
+        "name": "Чизкейк с ягодами",
+        "quantity": 3,
+        "price": 1750
+      },
+      {
+        "id": "lemonade",
+        "name": "Домашний лимонад",
+        "quantity": 1,
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "name": "Флэт уайт",
+        "quantity": 1,
+        "price": 1300
+      },
+      {
+        "id": "dish-1793949856105",
+        "name": "Борщ",
+        "quantity": 1,
+        "price": 1300
+      }
+    ],
+    "total": 9050,
+    "note": "",
+    "source": "guest",
+    "status": "closed",
+    "createdAt": "2026-11-06T09:36:22.628Z",
+    "closedAt": "2026-11-06T09:36:40.764Z",
+    "updatedAt": "2026-11-06T09:36:40.764Z"
+  },
+  {
+    "id": "A1624468",
+    "table": 1,
+    "items": [
+      {
+        "id": "chicken",
+        "name": "Цыплёнок с травами",
+        "quantity": 1,
+        "price": 4200
+      }
+    ],
+    "total": 4200,
+    "note": "",
+    "source": "admin",
+    "status": "closed",
+    "createdAt": "2026-11-06T07:53:44.468Z",
+    "closedAt": "2026-11-06T07:54:02.482Z",
+    "updatedAt": "2026-11-06T07:54:02.482Z"
+  },
+  {
+    "id": "A1509362",
+    "table": 10,
+    "items": [
+      {
+        "id": "chicken",
+        "name": "Цыплёнок с травами",
+        "quantity": 1,
+        "price": 4200
+      },
+      {
+        "id": "soup",
+        "name": "Тыквенный крем-суп",
+        "quantity": 1,
+        "price": 1950
+      },
+      {
+        "id": "cheesecake",
+        "name": "Чизкейк с ягодами",
+        "quantity": 1,
+        "price": 1750
+      },
+      {
+        "id": "lemonade",
+        "name": "Домашний лимонад",
+        "quantity": 1,
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "name": "Флэт уайт",
+        "quantity": 1,
+        "price": 1300
+      },
+      {
+        "id": "dish-1793949856105",
+        "name": "Борщ",
+        "quantity": 1,
+        "price": 1300
+      }
+    ],
+    "total": 11700,
+    "note": "",
+    "source": "guest",
+    "status": "closed",
+    "createdAt": "2026-11-06T07:51:49.362Z",
+    "closedAt": "2026-11-06T07:52:42.267Z",
+    "updatedAt": "2026-11-06T07:52:42.267Z"
+  },
+  {
+    "id": "A0403238",
+    "table": 3,
+    "items": [
+      {
+        "id": "cheesecake",
+        "name": "Чизкейк с ягодами",
+        "quantity": 2,
+        "price": 1750
+      }
+    ],
+    "total": 3500,
+    "note": "",
+    "source": "guest",
+    "status": "closed",
+    "createdAt": "2026-11-06T07:33:23.238Z",
+    "closedAt": "2026-11-06T07:38:11.166Z",
+    "updatedAt": "2026-11-06T07:38:11.166Z"
+  },
+  {
+    "id": "A0386904",
+    "table": 3,
+    "items": [
+      {
+        "id": "chicken",
+        "name": "Цыплёнок с травами",
+        "quantity": 1,
+        "price": 4200
+      },
+      {
+        "id": "coffee",
+        "name": "Флэт уайт",
+        "quantity": 1,
+        "price": 1300
+      },
+      {
+        "id": "lemonade",
+        "name": "Домашний лимонад",
+        "quantity": 1,
+        "price": 1200
+      },
+      {
+        "id": "dish-1793949856105",
+        "name": "Борщ",
+        "quantity": 1,
+        "price": 1300
+      },
+      {
+        "id": "dish-1793949856105",
+        "name": "Борщ",
+        "quantity": 1,
+        "price": 1300
+      }
+    ],
+    "total": 9300,
+    "note": "",
+    "source": "admin",
+    "status": "closed",
+    "createdAt": "2026-11-06T07:33:06.905Z",
+    "closedAt": "2026-11-06T07:38:11.166Z",
+    "updatedAt": "2026-11-06T07:38:11.166Z"
+  },
+  {
+    "id": "A9884592",
+    "table": 1,
+    "items": [
+      {
+        "id": "dish-1793949856105",
+        "name": "Борщ",
+        "quantity": 3,
+        "price": 1300
+      }
+    ],
+    "total": 3900,
+    "note": "",
+    "source": "guest",
+    "status": "closed",
+    "createdAt": "2026-11-06T07:24:44.592Z",
+    "updatedAt": "2026-11-06T07:30:39.354Z"
+  },
+  {
+    "id": "A9815217",
+    "table": 2,
+    "items": [
+      {
+        "id": "chicken",
+        "name": "Цыплёнок с травами",
+        "quantity": 1,
+        "price": 4200
+      },
+      {
+        "id": "lemonade",
+        "name": "Домашний лимонад",
+        "quantity": 1,
+        "price": 1200
+      },
+      {
+        "id": "coffee",
+        "name": "Флэт уайт",
+        "quantity": 1,
+        "price": 1300
+      }
+    ],
+    "total": 6700,
+    "note": "",
+    "source": "admin",
+    "status": "closed",
+    "createdAt": "2026-11-06T07:23:35.217Z",
+    "updatedAt": "2026-11-06T07:30:36.989Z"
+  },
+  {
+    "id": "A9753937",
+    "table": 1,
+    "items": [
+      {
+        "id": "chicken",
+        "name": "Цыплёнок с травами",
+        "quantity": 1,
+        "price": 4200
+      },
+      {
+        "id": "soup",
+        "name": "Тыквенный крем-суп",
+        "quantity": 1,
+        "price": 1950
+      },
+      {
+        "id": "cheesecake",
+        "name": "Чизкейк с ягодами",
+        "quantity": 1,
+        "price": 1750
+      }
+    ],
+    "total": 7900,
+    "note": "отсосать пенис",
+    "source": "guest",
+    "status": "closed",
+    "createdAt": "2026-11-06T07:22:33.937Z",
+    "updatedAt": "2026-11-06T07:30:38.357Z"
+  },
+  {
+    "id": "A7745258",
+    "table": 1,
+    "items": [
+      {
+        "id": "avocado",
+        "name": "Тост с авокадо",
+        "quantity": 1,
+        "price": 2450
+      },
+      {
+        "id": "cheesecake",
+        "name": "Чизкейк с ягодами",
+        "quantity": 1,
+        "price": 1750
+      },
+      {
+        "id": "coffee",
+        "name": "Флэт уайт",
+        "quantity": 1,
+        "price": 1300
+      }
+    ],
+    "total": 5500,
+    "note": "пенис",
+    "status": "closed",
+    "createdAt": "2026-11-06T06:49:05.258Z",
+    "updatedAt": "2026-11-06T07:02:03.996Z"
+  }
+]
