@@ -2,62 +2,93 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f6f1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10231a">
+  <meta name="description" content="Листва — городская кухня. Выберите блюда и закажите прямо к столику.">
   <title>Листва — меню</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap">
   <link rel="stylesheet" href="/style.css">
   <script type="module" src="/js/app.js"></script>
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="/"><span class="brand-mark">Л</span><span>ЛИСТВА<small>КАФЕ · ГОРОДСКАЯ КУХНЯ</small></span></a>
-    <div class="open-state" id="open-state" hidden><i></i> <span id="open-state-text"></span></div>
-    <button class="cart-top" id="cart-open">Корзина <b id="cart-count">0</b></button>
+  <header class="topbar" id="topbar">
+    <a class="brand" href="/"><span class="brand-mark">Л</span><span>ЛИСТВА<small>ГОРОДСКАЯ КУХНЯ</small></span></a>
+    <button class="table-pill" id="table-pill" aria-label="Выбрать столик">
+      <i aria-hidden="true"></i><span>Столик</span> <strong id="table-label">—</strong>
+    </button>
+    <button class="cart-top" id="cart-open" aria-label="Открыть корзину">
+      <span class="cart-top-label">Корзина</span> <b id="cart-count">0</b>
+    </button>
   </header>
 
-  <main>
-    <section class="hero">
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-inner">
       <div class="hero-copy">
-        <span class="eyebrow">МЕДЛЕННАЯ ЕДА · СЕЗОННЫЕ ПРОДУКТЫ</span>
-        <h1>Вкусно. Просто.<br><em>Для вас.</em></h1>
-        <p>Выберите любимое и закажите прямо к столику — мы уже готовим.</p>
-        <div class="table-chip">ВАШ СТОЛИК <strong id="table-label">не определён</strong></div>
+        <span class="hero-eyebrow reveal-now">МЕДЛЕННАЯ ЕДА · СЕЗОННЫЕ ПРОДУКТЫ</span>
+        <h1 class="reveal-now">Вкус, который<br><em>хочется повторить</em></h1>
+        <p class="reveal-now">Выберите любимое и закажите прямо к столику. Без ожидания официанта, в пару касаний.</p>
+        <div class="hero-actions reveal-now">
+          <a class="hero-cta" href="#menu">Смотреть меню <span aria-hidden="true">↓</span></a>
+          <button class="hero-table" id="hero-table">Выбрать столик</button>
+        </div>
         <p class="table-hint" id="table-hint" hidden>Чтобы сделать заказ, отсканируйте QR-код на столике.</p>
       </div>
       <div class="hero-art" aria-hidden="true">
+        <div class="orbit">
+          <span>🌿</span><span>🍋</span><span>🍅</span><span>🥕</span><span>🌶️</span>
+        </div>
         <div class="plate"><div class="plate-food">🥗</div></div>
-        <span class="art-note">Свежее каждый день<br><span data-hours>10:00–23:00</span></span>
-        <span class="art-leaf">✳</span>
       </div>
-    </section>
+    </div>
+  </section>
 
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Свежее каждый день</span><i>✳</i><span>Сезонные продукты</span><i>✳</i><span>Заказ прямо к столику</span><i>✳</i><span>Оплата после подачи</span><i>✳</i>
+      <span>Свежее каждый день</span><i>✳</i><span>Сезонные продукты</span><i>✳</i><span>Заказ прямо к столику</span><i>✳</i><span>Оплата после подачи</span><i>✳</i>
+    </div>
+  </div>
+
+  <main id="menu">
     <section class="order-tracker" id="order-tracker" aria-live="polite" hidden></section>
 
-    <nav class="categories" id="categories" aria-label="Разделы меню"></nav>
+    <section class="featured" id="featured" hidden>
+      <div class="section-heading">
+        <div><span class="eyebrow">ВЫБОР ШЕФА</span><h2>Гости любят</h2></div>
+      </div>
+      <div class="featured-row" id="featured-row"></div>
+    </section>
+
+    <div class="menu-bar" id="menu-bar">
+      <nav class="categories" id="categories" aria-label="Разделы меню"></nav>
+      <div class="menu-search">
+        <input id="menu-search" type="search" placeholder="Найти блюдо…" aria-label="Поиск блюда" autocomplete="off">
+      </div>
+    </div>
 
     <section class="menu-section">
       <div class="section-heading">
-        <div>
-          <span class="eyebrow">ИЗ НАШЕЙ КУХНИ</span>
-          <h2 id="category-title">Все блюда</h2>
-        </div>
-        <div class="menu-search">
-          <input id="menu-search" type="search" placeholder="Поиск блюда…" aria-label="Поиск блюда">
-        </div>
+        <div><span class="eyebrow">ИЗ НАШЕЙ КУХНИ</span><h2 id="category-title">Все блюда</h2></div>
         <span class="result-count" id="result-count"></span>
       </div>
       <div class="menu-grid" id="menu-grid"></div>
     </section>
-
-    <footer class="site-footer">
-      <a class="brand" href="/"><span class="brand-mark">Л</span><span>ЛИСТВА<small>Еда, которая радует</small></span></a>
-      <span>Ежедневно · <span data-hours>10:00–23:00</span></span>
-    </footer>
   </main>
+
+  <footer class="site-footer">
+    <a class="brand" href="/"><span class="brand-mark">Л</span><span>ЛИСТВА<small>Еда, которая радует</small></span></a>
+    <span>Оплата после подачи</span>
+  </footer>
+
+  <button class="cart-bar" id="cart-bar" hidden>
+    <span class="cart-bar-count" id="cart-bar-count">0</span>
+    <span>Открыть корзину</span>
+    <strong id="cart-bar-total">0 ₸</strong>
+  </button>
 
   <div class="overlay" id="overlay">
     <aside class="drawer" role="dialog" aria-modal="true" aria-label="Корзина">
@@ -66,13 +97,37 @@
         <button class="icon-button" id="close-cart" aria-label="Закрыть корзину">×</button>
       </div>
       <div id="cart-items" class="cart-items"></div>
-      <label class="note-label" for="order-note">Комментарий к заказу</label>
-      <textarea id="order-note" maxlength="500" placeholder="Например, без лука"></textarea>
-      <div class="cart-total"><span>Итого</span><strong id="cart-total">0 ₸</strong></div>
-      <button class="checkout" id="checkout">Заказать к столику <span>→</span></button>
-      <p class="secure-note">Оплата после подачи · заказ отправится на кухню</p>
+      <div class="drawer-foot">
+        <label class="note-label" for="order-note">Комментарий к заказу</label>
+        <textarea id="order-note" maxlength="500" rows="2" placeholder="Например, без лука"></textarea>
+        <div class="cart-total"><span>Итого</span><strong id="cart-total">0 ₸</strong></div>
+        <button class="checkout" id="checkout"><span id="checkout-label">Заказать к столику</span> <i aria-hidden="true">→</i></button>
+        <p class="secure-note">Оплата после подачи · заказ сразу уйдёт на кухню</p>
+      </div>
     </aside>
   </div>
+
+  <dialog class="sheet" id="dish-sheet" aria-label="Подробнее о блюде">
+    <div id="dish-sheet-body"></div>
+  </dialog>
+
+  <dialog class="sheet table-sheet" id="table-sheet" aria-labelledby="table-sheet-title">
+    <button class="icon-button sheet-close" data-close-dialog aria-label="Закрыть">×</button>
+    <span class="eyebrow">ПОДСКАЖИТЕ НАМ</span>
+    <h2 id="table-sheet-title">За каким вы столиком?</h2>
+    <p>Номер указан на табличке на столе.</p>
+    <div class="table-picker" id="table-picker"></div>
+  </dialog>
+
+  <dialog class="sheet success-sheet" id="success-sheet" aria-labelledby="success-title">
+    <div class="confetti" id="confetti" aria-hidden="true"></div>
+    <div class="success-check" aria-hidden="true">
+      <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l8 8 15-17"/></svg>
+    </div>
+    <h2 id="success-title">Заказ на кухне!</h2>
+    <p id="success-text"></p>
+    <button class="checkout" data-close-dialog><span>Следить за заказом</span> <i aria-hidden="true">→</i></button>
+  </dialog>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>

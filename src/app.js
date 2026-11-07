@@ -29,11 +29,6 @@ const MIME = {
 };
 const PAGES = { '/': 'index.html', '/login': 'login.html', '/admin': 'admin.html' };
 
-function isOpenAt(config, date) {
-  const hour = date.getHours();
-  return hour >= config.openHour && hour < config.closeHour;
-}
-
 function createApp(config) {
   fs.mkdirSync(config.dataDir, { recursive: true });
   const uploadsDir = path.join(config.dataDir, 'uploads');
@@ -41,17 +36,11 @@ function createApp(config) {
   const images = createImages(uploadsDir);
   const auth = createAuth(config, store);
   const orderLimiter = createLimiter({ max: 30, windowMs: 60_000 });
-  const now = config.now || (() => new Date());
 
   importLegacyData(store, images, config.legacyDir, path.join(config.backupDir, 'legacy'));
   const backupTimer = config.disableBackups ? null : scheduleBackups(store, config.backupDir, uploadsDir);
 
-  const publicConfig = () => ({
-    tables: config.tables,
-    openHour: config.openHour,
-    closeHour: config.closeHour,
-    isOpen: isOpenAt(config, now()),
-  });
+  const publicConfig = () => ({ tables: config.tables, requireTableQr: config.requireTableQr });
 
   function newDishId() {
     return `dish-${crypto.randomUUID()}`;
@@ -76,11 +65,8 @@ function createApp(config) {
       if (orderLimiter.isBlocked(ip)) throw new HttpError(429, 'Слишком много заказов подряд. Подождите минуту.');
       const data = await readJson(req, ORDER_BODY_LIMIT);
       const order = parseOrder(data, config.tables);
-      if (!isValidTableToken(config.tableSecret, order.table, data.tableToken)) {
+      if (config.requireTableQr && !isValidTableToken(config.tableSecret, order.table, data.tableToken)) {
         throw new HttpError(403, 'Отсканируйте QR-код на вашем столике.');
-      }
-      if (!isOpenAt(config, now())) {
-        throw new HttpError(409, `Кафе закрыто. Заказы принимаются с ${config.openHour}:00 до ${config.closeHour}:00.`);
       }
       orderLimiter.add(ip);
       sendJson(res, 201, store.orders.create({ ...order, source: 'guest' }));
@@ -259,4 +245,4 @@ function createApp(config) {
   };
 }
 
-module.exports = { createApp, isOpenAt };
+module.exports = { createApp };

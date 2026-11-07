@@ -33,14 +33,12 @@ function makeConfig(overrides = {}) {
     legacyDir: path.join(dir, 'legacy'),
     publicDir: path.join(ROOT, 'public'),
     tables: 20,
-    openHour: 10,
-    closeHour: 23,
+    requireTableQr: true,
     publicUrl: '',
     sessionHours: 12,
     adminPassword: PASSWORD,
     tableSecret: SECRET,
     disableBackups: true,
-    now: () => new Date(2026, 10, 6, 12, 0),
     ...overrides,
   };
 }
@@ -258,14 +256,17 @@ describe('заказы', () => {
     assert.equal((await call('/api/orders', { method: 'POST', body: guestOrder({ table: 99999 }) })).status, 400);
   });
 
-  test('вне рабочих часов гость заказать не может, а персонал может', async () => {
+  test('в демо-режиме заказ проходит без QR-кода, но столик проверяется', async () => {
     await app.close();
-    await boot({ now: () => new Date(2026, 10, 6, 23, 30) });
-    const login = await call('/api/login', { method: 'POST', body: { password: PASSWORD } });
-    cookie = login.headers.get('set-cookie').split(';')[0];
-    assert.equal((await call('/api/orders', { method: 'POST', body: guestOrder() })).status, 409);
-    assert.equal((await (await call('/api/config')).json()).isOpen, false);
-    assert.equal((await admin('/api/admin/orders', { method: 'POST', body: { table: 5, items: [{ id: 'soup', quantity: 1 }] } })).status, 201);
+    await boot({ requireTableQr: false });
+    assert.equal((await (await call('/api/config')).json()).requireTableQr, false);
+    assert.equal((await call('/api/orders', { method: 'POST', body: guestOrder({ tableToken: undefined }) })).status, 201);
+    assert.equal((await call('/api/orders', { method: 'POST', body: guestOrder({ table: 99 }) })).status, 400);
+  });
+
+  test('заказ принимается в любое время суток', async t => {
+    t.mock.timers.enable({ apis: ['Date'], now: new Date(2026, 10, 7, 3, 30) });
+    assert.equal((await call('/api/orders', { method: 'POST', body: guestOrder() })).status, 201);
   });
 
   test('одинаковые блюда объединяются в одну строку', async () => {

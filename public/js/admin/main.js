@@ -2,9 +2,10 @@ import { api } from '../shared.js';
 import { loadCash, initCash } from './cash.js';
 import { initMenu, onMenuChange } from './menu.js';
 import { initOrders, loadOrders, setDishes, setTableLimit } from './orders.js';
+import { refreshStats } from './stats.js';
 import { loadQr } from './qr.js';
 
-const LOADERS = { orders: loadOrders, cash: loadCash, qr: loadQr };
+const LOADERS = { orders: () => loadOrders(), cash: loadCash, qr: loadQr };
 
 function showTab(name) {
   document.querySelectorAll('[data-tab]').forEach(tab => tab.classList.toggle('active', tab.dataset.tab === name));
@@ -29,3 +30,5 @@ initOrders();
 initCash();
 initMenu();
 api('/api/config').then(config => setTableLimit(config.tables)).catch(() => {});
+loadOrders();
+refreshStats();

@@ -54,8 +54,8 @@ function loadConfig({ generateSecrets = false } = {}) {
     legacyDir: ROOT,
     publicDir: path.join(ROOT, 'public'),
     tables: intFrom(merged.TABLES, 20, 1, 500),
-    openHour: intFrom(merged.OPEN_HOUR, 10, 0, 23),
-    closeHour: intFrom(merged.CLOSE_HOUR, 23, 1, 24),
+    // На демо можно выключить: гость выберет столик сам, без QR-кода.
+    requireTableQr: merged.REQUIRE_TABLE_QR !== '0',
     publicUrl: (merged.PUBLIC_URL || '').replace(/\/+$/, ''),
     sessionHours: intFrom(merged.SESSION_HOURS, 12, 1, 720),
     adminPassword: merged.ADMIN_PASSWORD || '',

@@ -6,12 +6,12 @@
   <meta name="robots" content="noindex">
   <title>Админ-панель — Листва</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/admin.css">
   <script type="module" src="/js/admin/main.js"></script>
 </head>
-<body>
+<body class="admin-page">
   <header class="topbar">
     <a class="brand" href="/"><span class="brand-mark">Л</span><span>ЛИСТВА<small>АДМИН-ПАНЕЛЬ</small></span></a>
     <div class="topbar-actions">
@@ -21,18 +21,29 @@
   </header>
 
   <main class="admin-main">
-    <div class="section-heading">
-      <div><span class="eyebrow">УПРАВЛЕНИЕ КАФЕ</span><h2>Админ-панель</h2></div>
+    <div class="admin-hero">
+      <div>
+        <span class="eyebrow">УПРАВЛЕНИЕ КАФЕ</span>
+        <h1>Сегодня в «Листве»</h1>
+      </div>
+      <span class="live-dot" id="live-dot">Онлайн</span>
     </div>
 
-    <div class="admin-tabs">
-      <button class="admin-tab active" data-tab="menu">Меню блюд</button>
-      <button class="admin-tab" data-tab="orders">Заказы</button>
+    <div class="stats" id="stats">
+      <div class="stat"><span>Открытых столиков</span><strong id="stat-tables">—</strong></div>
+      <div class="stat"><span>Заказов в работе</span><strong id="stat-active">—</strong></div>
+      <div class="stat"><span>Выручка за день</span><strong id="stat-revenue">—</strong></div>
+      <div class="stat"><span>Средний чек</span><strong id="stat-average">—</strong></div>
+    </div>
+
+    <div class="admin-tabs" role="tablist">
+      <button class="admin-tab active" data-tab="orders">Заказы <b class="tab-badge" id="orders-badge" hidden>0</b></button>
+      <button class="admin-tab" data-tab="menu">Меню блюд</button>
       <button class="admin-tab" data-tab="cash">Касса</button>
       <button class="admin-tab" data-tab="qr">QR-коды</button>
     </div>
 
-    <section id="menu-panel" data-panel="menu">
+    <section id="menu-panel" data-panel="menu" hidden>
       <div class="admin-panel">
         <div class="section-heading">
           <div><span class="eyebrow" id="form-eyebrow">НОВОЕ БЛЮДО</span><h2 id="form-title">Добавить блюдо</h2></div>
@@ -72,11 +83,17 @@
       <div id="dish-list" class="admin-dishes"></div>
     </section>
 
-    <section id="orders-panel" data-panel="orders" hidden>
-      <div class="admin-panel manual-order">
-        <div class="section-heading">
-          <div><span class="eyebrow">НОВЫЙ ЗАКАЗ</span><h2>Ввести вручную</h2></div>
-        </div>
+    <section id="orders-panel" data-panel="orders">
+      <p class="alert" id="orders-alert" role="alert" hidden></p>
+      <div class="section-heading">
+        <div><span class="eyebrow">В РАБОТЕ</span><h2>Открытые столики</h2></div>
+      </div>
+      <div id="orders" class="orders-list"></div>
+      <details class="admin-panel manual-order catalog-heading">
+        <summary class="section-heading">
+          <div><span class="eyebrow">НОВЫЙ ЗАКАЗ</span><h2>Ввести заказ вручную</h2></div>
+          <span class="summary-toggle" aria-hidden="true">+</span>
+        </summary>
         <form id="manual-order-form" class="dish-form">
           <label>Столик<input id="manual-table" type="number" min="1" required placeholder="№ столика"></label>
           <label>Комментарий<input id="manual-note" maxlength="500" placeholder="Например, без лука"></label>
@@ -90,12 +107,7 @@
             <span id="manual-message" role="status"></span>
           </div>
         </form>
-      </div>
-      <p class="alert" id="orders-alert" role="alert" hidden></p>
-      <div class="section-heading catalog-heading">
-        <div><span class="eyebrow">В РАБОТЕ</span><h2>Открытые столики</h2></div>
-      </div>
-      <div id="orders" class="orders-list"></div>
+      </details>
     </section>
 
     <section id="cash-panel" data-panel="cash" hidden>
@@ -126,5 +138,6 @@
       </div>
     </section>
   </main>
+  <div class="toast" id="admin-toast" role="status" aria-live="polite"></div>
 </body>
 </html>
